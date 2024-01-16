@@ -26,6 +26,10 @@ function HomeScreen() {
       <Link to={`/call/${username}/${room}`}>
         <input type="submit" name="submit" value="Join Room" />
       </Link>
+
+      <Link to={`/testVideo`}>
+        <input type="submit" name="submit" value="Test Video" />
+      </Link>
     </form>
   );
 }
