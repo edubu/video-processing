@@ -23,6 +23,6 @@ def read_root():
     return {"Hello": "World"}
 
 
-@app.post("/sendTestChunk")
+@app.post("/upload_test_chunk")
 async def receive_chunk(chunk):
     print(chunk)
