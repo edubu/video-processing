@@ -1,6 +1,6 @@
-from typing import Union
+from typing import Annotated
 
-from fastapi import FastAPI
+from fastapi import FastAPI, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
@@ -24,5 +24,9 @@ def read_root():
 
 
 @app.post("/upload_test_chunk")
-async def receive_chunk(chunk):
-    print(chunk)
+async def receive_chunk(videoChunk: UploadFile = File(...), FPS: float = Form(...)):
+    # Process the chunk here, e.g., save it to a file
+    # You can use videoChunk.file.read() to access the binary data
+    print(f"Video chunk: {videoChunk}")
+    print(f"FPS: {FPS}")
+    return {"Success": "True", "Received_FPS": FPS}
