@@ -22,7 +22,7 @@ const TestVideoScreen = () => {
       </div>
       <button
         className="bg-sky-500 text-white px-4 py-2 rounded-lg"
-        onClick={() => startStreaming(20)}
+        onClick={() => startStreaming(20, "test_stream")}
       >
         Start Livestream
       </button>
