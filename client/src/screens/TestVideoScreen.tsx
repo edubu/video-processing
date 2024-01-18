@@ -1,9 +1,22 @@
 /*  */
 import React, { useRef, useCallback, useEffect, useState } from "react";
 import WebcamStream from "../components/WebcamStream";
-import { startStreaming } from "../lib/video";
+import { startStreaming, generateStreamId } from "../lib/video";
 
 const TestVideoScreen = () => {
+  const [streamId, setStreamId] = useState<string>("");
+  const [isStreaming, setIsStreaming] = useState<boolean>(false);
+  const [FPS, setFPS] = useState<number>(20);
+
+  const handleStartStreaming = async () => {
+    const streamId = generateStreamId(16);
+    setStreamId(streamId);
+
+    setIsStreaming(true);
+
+    startStreaming(FPS, streamId);
+  };
+
   return (
     <div>
       <h1>Test Video Screen</h1>
@@ -22,7 +35,7 @@ const TestVideoScreen = () => {
       </div>
       <button
         className="bg-sky-500 text-white px-4 py-2 rounded-lg"
-        onClick={() => startStreaming(20, "test_stream")}
+        onClick={() => handleStartStreaming()}
       >
         Start Livestream
       </button>

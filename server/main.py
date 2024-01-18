@@ -34,7 +34,7 @@ async def ping_redis():
     return {"ping": r.ping()}
 
 
-@app.post("/upload_test_chunk")
+@app.post("/upload_chunk")
 async def receive_chunk(videoChunk: UploadFile = File(...), FPS: float = Form(...), streamId: str = Form(...)):
     # Process the chunk here, e.g., save it to a file
     # You can use videoChunk.file.read() to access the binary data
